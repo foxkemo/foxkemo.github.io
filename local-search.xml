@@ -4,11 +4,37 @@
   
   
   <entry>
-    <title>Linux使用</title>
-    <link href="/2025/04/05/Linux%E4%BD%BF%E7%94%A8/index/"/>
-    <url>/2025/04/05/Linux%E4%BD%BF%E7%94%A8/index/</url>
+    <title>Mysql入门</title>
+    <link href="/2025/04/05/Mysql%E5%85%A5%E9%97%A8/"/>
+    <url>/2025/04/05/Mysql%E5%85%A5%E9%97%A8/</url>
     
-    <content type="html"><![CDATA[<h2 id="Linux-使用小技巧"><a href="#Linux-使用小技巧" class="headerlink" title="Linux 使用小技巧"></a>Linux 使用小技巧</h2><h3 id="vim键盘图"><a href="#vim键盘图" class="headerlink" title="vim键盘图"></a>vim键盘图</h3><p><img src="/./01.gif" alt="vim 键盘图"><br>键位参考如下<br><br><a href="https://www.runoob.com/w3cnote/all-vim-cheatsheat.html">vim 使用进阶指南 菜鸟教程</a></p><h3 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h3><p><img src="/./02.png" alt="文件结构示意图"></p>]]></content>
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java基础知识</title>
+    <link href="/2025/04/05/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    <url>/2025/04/05/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux入门</title>
+    <link href="/2025/04/05/Linux%E5%85%A5%E9%97%A8/"/>
+    <url>/2025/04/05/Linux%E5%85%A5%E9%97%A8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Linux-使用小技巧"><a href="#Linux-使用小技巧" class="headerlink" title="Linux 使用小技巧"></a>Linux 使用小技巧</h2><h3 id="vim键盘图"><a href="#vim键盘图" class="headerlink" title="vim键盘图"></a>vim键盘图</h3><p><img src="/Linux%E5%85%A5%E9%97%A8/01.gif" alt="vim 键盘图"><br>键位参考如下<br><br><a href="https://www.runoob.com/w3cnote/all-vim-cheatsheat.html">vim 使用进阶指南 菜鸟教程</a></p><h3 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h3><p><img src="/Linux%E5%85%A5%E9%97%A8/02.png" alt="文件结构示意图"></p>]]></content>
     
     
     
