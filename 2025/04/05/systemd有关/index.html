@@ -19,21 +19,21 @@
   <meta name="author" content="Unomi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="java 多线程synchronized 锁住的到底是什么？分为静态方法和非静态方法">
+    <meta name="description" content="好的！我们来把 Linux 中 systemd 服务的状态 讲得清清楚楚，包括它的几个主要 状态分类、每个字段的意义、常见的状态组合，并且带上图解风格思维导图式分类👇  🧱 一、服务状态的 3 个关键字段（在 systemctl 中）   字段 意义 举例    LOAD 是否成功加载了 unit 文件 loaded &#x2F; not-found   ACTIVE 高层次的活跃状态（是否正">
 <meta property="og:type" content="article">
-<meta property="og:title" content="有趣的问题">
-<meta property="og:url" content="http://foxkemo.github.io/2025/04/05/%E6%9C%89%E8%B6%A3%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="systemd">
+<meta property="og:url" content="http://foxkemo.github.io/2025/04/05/systemd%E6%9C%89%E5%85%B3/index.html">
 <meta property="og:site_name" content="Foxkemo&#39;s Blog (Test)">
-<meta property="og:description" content="java 多线程synchronized 锁住的到底是什么？分为静态方法和非静态方法">
+<meta property="og:description" content="好的！我们来把 Linux 中 systemd 服务的状态 讲得清清楚楚，包括它的几个主要 状态分类、每个字段的意义、常见的状态组合，并且带上图解风格思维导图式分类👇  🧱 一、服务状态的 3 个关键字段（在 systemctl 中）   字段 意义 举例    LOAD 是否成功加载了 unit 文件 loaded &#x2F; not-found   ACTIVE 高层次的活跃状态（是否正">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-05T06:59:22.000Z">
-<meta property="article:modified_time" content="2025-04-06T07:32:30.182Z">
+<meta property="article:modified_time" content="2025-04-10T08:40:38.323Z">
 <meta property="article:author" content="Unomi">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>有趣的问题 - Foxkemo&#39;s Blog (Test)</title>
+  <title>systemd - Foxkemo&#39;s Blog (Test)</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="有趣的问题"></span>
+            <span id="subtitle" data-typed-text="systemd"></span>
           
         </div>
 
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          24 字
+          570 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          1 分钟
+          5 分钟
         
       </span>
     
@@ -270,12 +270,140 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">有趣的问题</h1>
+            <h1 id="seo-header">systemd</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="java-多线程synchronized-锁住的到底是什么？"><a href="#java-多线程synchronized-锁住的到底是什么？" class="headerlink" title="java 多线程synchronized 锁住的到底是什么？"></a>java 多线程synchronized 锁住的到底是什么？</h1><h2 id="分为静态方法和非静态方法"><a href="#分为静态方法和非静态方法" class="headerlink" title="分为静态方法和非静态方法"></a>分为静态方法和非静态方法</h2>
+                <p>好的！我们来把 Linux 中 <strong>systemd 服务的状态</strong> 讲得清清楚楚，包括它的几个主要 <strong>状态分类</strong>、每个字段的意义、常见的状态组合，并且带上<strong>图解风格思维导图式分类</strong>👇</p>
+<hr>
+<h2 id="🧱-一、服务状态的-3-个关键字段（在-systemctl-中）"><a href="#🧱-一、服务状态的-3-个关键字段（在-systemctl-中）" class="headerlink" title="🧱 一、服务状态的 3 个关键字段（在 systemctl 中）"></a>🧱 一、服务状态的 3 个关键字段（在 <code>systemctl</code> 中）</h2><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>意义</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>LOAD</strong></td>
+<td>是否成功加载了 unit 文件</td>
+<td><code>loaded</code> &#x2F; <code>not-found</code></td>
+</tr>
+<tr>
+<td><strong>ACTIVE</strong></td>
+<td>高层次的活跃状态（是否正在工作）</td>
+<td><code>active</code> &#x2F; <code>inactive</code> &#x2F; <code>failed</code></td>
+</tr>
+<tr>
+<td><strong>SUB</strong></td>
+<td>具体的子状态，描述服务的运行细节</td>
+<td><code>running</code> &#x2F; <code>exited</code> &#x2F; <code>dead</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🧩-二、服务状态分类（思维导图风格）"><a href="#🧩-二、服务状态分类（思维导图风格）" class="headerlink" title="🧩 二、服务状态分类（思维导图风格）"></a>🧩 二、服务状态分类（思维导图风格）</h2><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig">服务状态 (<span class="hljs-string">systemctl</span> <span class="hljs-built_in">list-units)</span><br>├── <span class="hljs-string">LOAD</span><br>│   ├── <span class="hljs-string">loaded</span>         <span class="hljs-comment"># unit 文件已成功加载</span><br>│   ├── <span class="hljs-string">not-found</span>      <span class="hljs-comment"># unit 文件不存在</span><br>│   └── <span class="hljs-string">bad-setting</span>    <span class="hljs-comment"># 配置错误</span><br>│<br>├── <span class="hljs-string">ACTIVE</span><br>│   ├── <span class="hljs-string">active</span>         <span class="hljs-comment"># 服务正常运行中</span><br>│   ├── <span class="hljs-string">inactive</span>       <span class="hljs-comment"># 没有运行</span><br>│   ├── <span class="hljs-string">activating</span>     <span class="hljs-comment"># 正在启动中</span><br>│   ├── <span class="hljs-string">deactivating</span>   <span class="hljs-comment"># 正在关闭中</span><br>│   └── <span class="hljs-string">failed</span>         <span class="hljs-comment"># 启动失败</span><br>│<br>└── <span class="hljs-string">SUB</span><br>    ├── <span class="hljs-string">running</span>        <span class="hljs-comment"># 正常运行中（持续进程）</span><br>    ├── <span class="hljs-string">exited</span>         <span class="hljs-comment"># 启动后立即退出（短生命周期，如一次性脚本）</span><br>    ├── <span class="hljs-string">waiting</span>        <span class="hljs-comment"># 守护进程等待事件触发（常见于 socket 服务）</span><br>    ├── <span class="hljs-string">dead</span>           <span class="hljs-comment"># 没有活动进程</span><br>    └── <span class="hljs-string">auto-restart</span>   <span class="hljs-comment"># 正在尝试自动重启（Restart=always）</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🧠-三、常见状态组合（systemctl-list-units）"><a href="#🧠-三、常见状态组合（systemctl-list-units）" class="headerlink" title="🧠 三、常见状态组合（systemctl list-units）"></a>🧠 三、常见状态组合（<code>systemctl list-units</code>）</h2><table>
+<thead>
+<tr>
+<th>LOAD</th>
+<th>ACTIVE</th>
+<th>SUB</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>loaded</td>
+<td>active</td>
+<td>running</td>
+<td>✅ 正常运行中（如 ssh、nginx）</td>
+</tr>
+<tr>
+<td>loaded</td>
+<td>active</td>
+<td>exited</td>
+<td>✅ 运行后退出（如一次性任务）</td>
+</tr>
+<tr>
+<td>loaded</td>
+<td>inactive</td>
+<td>dead</td>
+<td>⚠️ 未启动服务但配置没问题</td>
+</tr>
+<tr>
+<td>loaded</td>
+<td>failed</td>
+<td>failed</td>
+<td>❌ 启动失败，可查日志</td>
+</tr>
+<tr>
+<td>not-found</td>
+<td>inactive</td>
+<td>dead</td>
+<td>❌ unit 文件都找不到</td>
+</tr>
+<tr>
+<td>loaded</td>
+<td>active</td>
+<td>waiting</td>
+<td>💤 守候中（如 socket 触发服务）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🔧-四、如何排查异常状态"><a href="#🔧-四、如何排查异常状态" class="headerlink" title="🔧 四、如何排查异常状态"></a>🔧 四、如何排查异常状态</h2><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>原因分析</th>
+<th>排查方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>failed</code></td>
+<td>启动失败</td>
+<td><code>journalctl -xe</code> 或 <code>systemctl status 服务名</code></td>
+</tr>
+<tr>
+<td><code>exited</code></td>
+<td>脚本类服务执行完退出（正常）</td>
+<td>查看是否需要持久运行</td>
+</tr>
+<tr>
+<td><code>inactive</code></td>
+<td>没启动或被停止了</td>
+<td><code>systemctl start 服务名</code> 启动它</td>
+</tr>
+<tr>
+<td><code>masked</code></td>
+<td>被管理员禁用启动了</td>
+<td><code>sudo systemctl unmask 服务名</code> 解锁</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🎯-五、查看单个服务状态（命令）"><a href="#🎯-五、查看单个服务状态（命令）" class="headerlink" title="🎯 五、查看单个服务状态（命令）"></a>🎯 五、查看单个服务状态（命令）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl status nginx<br></code></pre></td></tr></table></figure>
+
+<p>输出包括：</p>
+<ul>
+<li>Loaded: 文件路径</li>
+<li>Active: 状态 + 时间</li>
+<li>Process: PID 等信息</li>
+<li>日志片段（类似 tail）</li>
+</ul>
+<hr>
+<h2 id="✅-例子讲解：systemctl-status-ssh"><a href="#✅-例子讲解：systemctl-status-ssh" class="headerlink" title="✅ 例子讲解：systemctl status ssh"></a>✅ 例子讲解：<code>systemctl status ssh</code></h2><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts">● ssh.service - OpenBSD Secure Shell server<br><span class="hljs-symbol">   Loaded:</span> loaded (<span class="hljs-keyword">/lib/</span>systemd<span class="hljs-keyword">/system/</span>ssh.<span class="hljs-attr">service</span><span class="hljs-punctuation">;</span> enabled)<br><span class="hljs-symbol">   Active:</span> active (running) since ...<br> Main PID: <span class="hljs-number">938</span><br></code></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>Unit 文件成功加载（loaded）</li>
+<li>当前正在运行（active）</li>
+<li>是持续服务（sub: running）</li>
+<li>设置了开机自启（enabled）</li>
+</ul>
+<hr>
+<p>如果你发我一条你机器上 <code>systemctl status xxx</code> 的输出，我可以帮你读懂它的状态和建议怎么处理～是否要我也画张小图帮助你记忆这几个状态关系？</p>
+
                 
               </div>
             
@@ -292,8 +420,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>有趣的问题</div>
-      <div>http://foxkemo.github.io/2025/04/05/有趣的问题/</div>
+      <div>systemd</div>
+      <div>http://foxkemo.github.io/2025/04/05/systemd有关/</div>
     </div>
     <div class="license-meta">
       
